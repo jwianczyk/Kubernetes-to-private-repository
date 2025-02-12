@@ -17,6 +17,7 @@ Firstly we have to create secret with credentials for private repository, in my 
 We can do that in two ways each having their own benefits.
 - The first method is manually using `docker login` command and using the generated `.docker/config.json` file 
 for creating a secret
+
 - The second method requires using a single command for creating a k8s secret: \
 `kubectl create secret docker-registry <name-of-secret>` \
 `--docker-server=<ECR-address> `\
