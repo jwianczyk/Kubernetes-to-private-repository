@@ -18,10 +18,13 @@ We can do that in two ways each having their own benefits.
 - The first method is manually using `docker login` command and using the generated `.docker/config.json` file 
 for creating a secret
 - The second method requires using a single command for creating a k8s secret: \
-`kubectl create secret docker-registry my-registry-key-two` \
-`--docker-server=https://211125446476.dkr.ecr.eu-central-1.amazonaws.com `\
+`kubectl create secret docker-registry <name-of-secret>` \
+`--docker-server=<ECR-address> `\
 `--docker-username=AWS` \
 `--docker-password=$(aws ecr get-login-password)`
 
 The second method is more convenient but limits us to only one private repository per secret while the first one can 
 contain credentials of more than one remote repositories.
+
+After creating secret with remote repository credentials we pass the secret name into deployment along with name of 
+repository so the kubernetes can pull the image into the cluster.
